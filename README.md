@@ -85,3 +85,29 @@ Melihat semua data setelah DELETE
 ![post-create](./images/get-by-id-after-delete.png)
 
 ---
+
+# 📌 4. Features
+
+## **Keamanan Data**
+Request secara rate limiter
+
+**Placeholder**
+![post-create](./images/rate-limiter.png)
+
+---
+
+## **PUT Seluruh Data**
+Mengedit/menambahkan dengan seluruh data
+
+**Placeholder**
+![post-create](./images/put-all.png)
+
+---
+
+## **Filter Mencari Data**
+Filter data. Misal filter dengan keyword 'nasi'
+
+**Placeholder**
+![post-create](./images/filter-keyword.png)
+
+---

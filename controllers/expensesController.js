@@ -11,17 +11,26 @@ function parseMonthFilter(month) {
 
 async function listExpenses(req, res) {
     try {
-        const { userId, category, month } = req.query
+        const { userId, category, month, minAmount, maxAmount, keyword } = req.query
         let items = db.getAll()
+
         if (userId) items = items.filter(e => String(e.userId) === String(userId))
         if (category) items = items.filter(e => e.category === category)
+
         const monthPrefix = parseMonthFilter(month)
         if (monthPrefix) items = items.filter(e => e.date.startsWith(monthPrefix))
+
+        if (minAmount) items = items.filter(e => Number(e.amount) >= Number(minAmount))
+        if (maxAmount) items = items.filter(e => Number(e.amount) <= Number(maxAmount))
+
+        if (keyword) items = items.filter(e => e.note.toLowerCase().includes(keyword.toLowerCase()))
+
         return res.status(200).json(items)
     } catch (err) {
         return res.status(500).json({ error: err.message })
     }
 }
+
 
 async function getExpenseById(req, res) {
     try {
@@ -70,11 +79,13 @@ async function updateExpense(req, res) {
         if (date !== undefined) patch.date = date
         const updated = db.update(id, patch)
         if (!updated) return res.status(404).json({ error: "expense not found" })
-        return res.status(200).json(updated)
+        const all = db.getAll()
+        return res.status(200).json({ updated, all })
     } catch (err) {
         return res.status(500).json({ error: err.message })
     }
 }
+
 
 async function deleteExpense(req, res) {
     try {

@@ -4,6 +4,14 @@ const app = express()
 const expensesRoutes = require("./routes/expensesRoutes")
 
 app.use(bodyParser.json())
+const rateLimit = require("express-rate-limit")
+
+const limiter = rateLimit({
+  windowMs: 1 * 60 * 1000,
+  max: 5
+})
+
+app.use(limiter)
 
 app.use("/expenses/users", expensesRoutes) 
 app.use("/expenses", require("./routes/expensesRoutes"))
