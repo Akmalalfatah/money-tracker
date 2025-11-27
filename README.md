@@ -62,7 +62,7 @@ Mengupdate data pengeluaran.
 
 ---
 
-## **POST /expenses**
+## **GET /expenses**
 Melihat semua data setelah PUT
 
 **Placeholder:**
@@ -78,7 +78,7 @@ Menghapus data.
 
 ---
 
-## **POST /expenses**
+## **GET /expenses**
 Melihat semua data setelah DELETE
 
 **Placeholder:**
