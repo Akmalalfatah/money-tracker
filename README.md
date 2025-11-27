@@ -1,67 +1,87 @@
 # Expense Tracker API
 
-Deskripsi singkat
-Aplikasi backend sederhana untuk mencatat pengeluaran per user. Terstruktur modular (data, controllers, routes). Diimplementasikan dengan Node.js + Express.
+Aplikasi backend sederhana untuk mencatat pengeluaran pengguna. Dibangun dengan Node.js + Express dan dipisah modular (data, controllers, routes).
 
-Prasyarat
-Node.js v16+ dan npm
+---
 
-Instalasi
-1. clone repo
-2. jalankan
-   npm install
+# 📌 1. Persiapan Project
 
-Menjalankan server
+## Install Dependencies
+Jalankan perintah berikut di terminal:
+
+```
+npm install
+```
+
+---
+
+# 📌 2. Start Server
+
+Gunakan perintah berikut untuk menjalankan server:
+
+```
 npm start
-Server berjalan di http://localhost:3000
+```
 
-Struktur proyek
-data/expenses.js
-controllers/expensesController.js
-routes/expensesRoutes.js
-index.js
+Jika berhasil, terminal akan menampilkan:
 
-Endpoints
-GET /expenses
-Query contoh: /expenses?userId=101&month=2025-11&category=food
-Response: array expenses
+```
+Server running on port 3000
+```
 
-GET /expenses/:id
-Contoh: /expenses/1
-Response: object expense atau 404
+**Placeholder image:**
+![server-start](./images/start-server.png)
 
-POST /expenses
-Body (application/json):
-{
-  "userId": 101,
-  "amount": 50000,
-  "category": "food",
-  "note": "sarapan",
-  "date": "2025-11-27"
-}
-Response: 201 created
+---
 
-PUT /expenses/:id
-Body: fields yang ingin diupdate (amount/category/note/date)
-Response: 200 updated atau 404
-
-DELETE /expenses/:id
-Response: 200 { message: "deleted" } atau 404
-
-GET /expenses/users/:userId/summary?month=2025-11
-Contoh: /expenses/users/101/summary?month=2025-11
-Response:
-{
-  "userId": "101",
-  "month": "2025-11",
-  "total": 125000,
-  "byCategory": { "food": 50000, "transport": 75000 },
-  "count": 2
-}
-
-Error handling
-API mengembalikan status kode yang sesuai: 200, 201, 400, 404, 500
+# 📌 3. Endpoints API
 
 
-Licensi
-MIT
+## **GET /expenses/:id**
+Mengambil 1 item berdasarkan ID.
+
+
+**Placeholder:**
+![get-by-id](./images/get-by-id.png)
+
+---
+
+## **POST /expenses**
+Membuat data pengeluaran baru.
+
+**Placeholder:**
+![post-create](./images/post.png)
+
+---
+
+## **PUT /expenses/:id**
+Mengupdate data pengeluaran.
+
+**Placeholder:**
+![put-update](./images/edit.png)
+
+---
+
+## **POST /expenses**
+Melihat semua data setelah PUT
+
+**Placeholder:**
+![post-create](./images/get-by-id-after-edit.png)
+
+---
+
+## **DELETE /expenses/:id**
+Menghapus data.
+
+**Placeholder:**
+![delete-expense](./images/delete.png)
+
+---
+
+## **POST /expenses**
+Melihat semua data setelah DELETE
+
+**Placeholder:**
+![post-create](./images/get-by-id-after-delete.png)
+
+---
